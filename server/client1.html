@@ -1,0 +1,48 @@
+<!-- 
+    TEST CLIENT HTML FILE 
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="'UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Socket Testing</title>
+</head>
+
+<body>
+    Client 1
+    <input id="message_input" placeholder="type your message here"></input>
+    <button onClick="sendMessage()">Send Message</button>
+</body>
+<div id="chat_box" style="display:block; overflow:scroll; width:500px"></div>
+
+
+
+
+<script>
+    // Create WebSocket connection
+    const ws = new WebSocket('ws://localhost:3000/websocket');
+    var chatBox = document.getElementById("chat_box");
+
+    ws.addEventListener('open', function (event) {
+        console.log('Client 1 connected to server')
+        ws.send('Client 1 Connected')
+    });
+
+    ws.addEventListener('message', function (event) {
+        var tag = document.createElement("p");
+        tag.innerText = event.data
+        chatBox.appendChild(tag);
+        console.log(event.data)
+    });
+
+    const sendMessage = () => {
+        var text = document.getElementById('message_input').value
+        ws.send("Client 1 : " + text + "\n")
+        document.getElementById('message_input').value = '' //reset
+    }
+</script>
+
+</html>
