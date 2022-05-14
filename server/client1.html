@@ -23,24 +23,26 @@
 
 <script>
     // Create WebSocket connection
-    const ws = new WebSocket('ws://localhost:3000/websocket');
+    const ws = new WebSocket('ws://localhost:5000/websocket');
     var chatBox = document.getElementById("chat_box");
 
     ws.addEventListener('open', function (event) {
-        console.log('Client 1 connected to server')
-        ws.send('Client 1 Connected')
+        message = {"sender": "Client 1", "room": "A", "operation": "join"}
+        ws.send(JSON.stringify(message))
     });
 
     ws.addEventListener('message', function (event) {
         var tag = document.createElement("p");
-        tag.innerText = event.data
+        const message = JSON.parse(event.data);
+        tag.innerText = `${message.sender}: ${message.message}`
         chatBox.appendChild(tag);
         console.log(event.data)
     });
 
     const sendMessage = () => {
         var text = document.getElementById('message_input').value
-        ws.send("Client 1 : " + text + "\n")
+        var message = {"message": text, "sender": "Client 1", "room": "A", "operation": "message"}
+        ws.send(JSON.stringify(message))
         document.getElementById('message_input').value = '' //reset
     }
 </script>
