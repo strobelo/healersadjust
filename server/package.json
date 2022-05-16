@@ -2,19 +2,30 @@
   "dependencies": {
     "express": "^4.18.1",
     "lsof": "^0.1.0",
-    "nodemon": "^2.0.16",
+    "typescript": "^4.6.4",
     "ws": "^8.6.0"
   },
   "name": "healersadjust-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "node index.js",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.33",
+    "@types/ws": "^8.5.3",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0",
+    "tslint": "^6.1.3"
+  }
 }
