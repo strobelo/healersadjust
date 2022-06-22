@@ -1,0 +1,56 @@
+.map-header {
+  /* border: 10px solid;
+  border-color: red; */
+  display: flex;
+  padding: 1em;
+  width: 100%;
+  top: 0;
+  /* left: 0; */
+}
+
+/*
+* Drawing Template
+*/
+
+.chat-box-div {
+  /* border: solid 2px red; */
+  bottom: 0;
+  width: 100%;
+}
+
+.chat-box-display {
+  background-color:rgb(231, 231, 231);
+  position:relative;
+  margin: 1em;
+  height: 100%;
+}
+
+#chat-input {
+  width: 80%;
+  background-color: rgb(231, 231, 231);
+  
+}
+
+
+/* 
+---------------------------------------------------------------------------------------
+*/
+
+.template-one-grid {
+  display: flex;
+  padding: 1em;
+}
+
+.template-two-grid {
+  display: flex;
+  padding: 1em;
+}
+
+.template-three-grid {
+  display: flex;
+  padding: 1em;
+}
+
+/* 
+---------------------------------------------------------------------------------------
+*/
